@@ -1,0 +1,64 @@
+<div>
+    <h2 data-translate="voess2App.userWatchedVideo.home.title">User Watched Videos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="user-watched-videovoess.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="voess2App.userWatchedVideo.home.createLabel">
+                        Create new User Watched Video
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="startDateTime"><span data-translate="voess2App.userWatchedVideo.startDateTime">Start Date Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.login"><span data-translate="voess2App.userWatchedVideo.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="video.videoName"><span data-translate="voess2App.userWatchedVideo.video">Video</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="userWatchedVideo in vm.userWatchedVideos track by userWatchedVideo.id">
+                    <td><a ui-sref="user-watched-videovoess-detail({id:userWatchedVideo.id})">{{userWatchedVideo.id}}</a></td>
+                    <td>{{userWatchedVideo.startDateTime | date:'medium'}}</td>
+                    <td>
+                        {{userWatchedVideo.user.login}}
+                    </td>
+                    <td>
+                        <a ui-sref="videovoess-detail({id:userWatchedVideo.video.id})">{{userWatchedVideo.video.videoName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="user-watched-videovoess-detail({id:userWatchedVideo.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="user-watched-videovoess.edit({id:userWatchedVideo.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="user-watched-videovoess.delete({id:userWatchedVideo.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

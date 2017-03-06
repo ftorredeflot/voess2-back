@@ -5,6 +5,31 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164600_added_entity_Country.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164601_added_entity_Game.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164602_added_entity_Friendship.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164603_added_entity_UserLikedVideo.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164604_added_entity_UserWatchedVideo.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164605_added_entity_UserFavVideo.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164606_added_entity_UserLikedPlayer.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164607_added_entity_UserLikedTeams.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164608_added_entity_TeamFormer.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164655_added_entity_UserExt.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164656_added_entity_Video.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164657_added_entity_Team.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164658_added_entity_Tournament.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164659_added_entity_Player.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="classpath:config/liquibase/changelog/20170306164602_added_entity_constraints_Friendship.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164603_added_entity_constraints_UserLikedVideo.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164604_added_entity_constraints_UserWatchedVideo.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164605_added_entity_constraints_UserFavVideo.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164606_added_entity_constraints_UserLikedPlayer.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164607_added_entity_constraints_UserLikedTeams.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164608_added_entity_constraints_TeamFormer.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164655_added_entity_constraints_UserExt.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164656_added_entity_constraints_Video.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164658_added_entity_constraints_Tournament.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170306164659_added_entity_constraints_Player.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

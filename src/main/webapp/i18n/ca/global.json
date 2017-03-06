@@ -7,6 +7,20 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entitats",
+                "countryvoess": "Country",
+                "gamevoess": "Game",
+                "friendshipvoess": "Friendship",
+                "userLikedVideovoess": "User Liked Video",
+                "userWatchedVideovoess": "User Watched Video",
+                "userFavVideovoess": "User Fav Video",
+                "userLikedPlayervoess": "User Liked Player",
+                "userLikedTeamsvoess": "User Liked Teams",
+                "teamFormervoess": "Team Former",
+                "userExtvoess": "User Ext",
+                "videovoess": "Video",
+                "teamvoess": "Team",
+                "tournamentvoess": "Tournament",
+                "playervoess": "Player",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

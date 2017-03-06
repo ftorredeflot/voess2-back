@@ -1,0 +1,11 @@
+{
+    "voess2App": {
+        "TipusVideo" : {
+            "null": "",
+            "INICI": "INICI",
+            "POOL": "POOL",
+            "TORNEIG": "TORNEIG",
+            "LLIURE": "LLIURE"
+        }
+    }
+}

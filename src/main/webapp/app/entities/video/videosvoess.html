@@ -1,0 +1,100 @@
+<div>
+    <h2 data-translate="voess2App.video.home.title">Videos</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="videovoess.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="voess2App.video.home.createLabel">
+                        Create new Video
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoName"><span data-translate="voess2App.video.videoName">Video Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoDuration"><span data-translate="voess2App.video.videoDuration">Video Duration</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoDate"><span data-translate="voess2App.video.videoDate">Video Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoViewerCount"><span data-translate="voess2App.video.videoViewerCount">Video Viewer Count</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoViewerCountLive"><span data-translate="voess2App.video.videoViewerCountLive">Video Viewer Count Live</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoUrl"><span data-translate="voess2App.video.videoUrl">Video Url</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoBlob"><span data-translate="voess2App.video.videoBlob">Video Blob</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoCover"><span data-translate="voess2App.video.videoCover">Video Cover</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoPicks"><span data-translate="voess2App.video.videoPicks">Video Picks</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoGameStart"><span data-translate="voess2App.video.videoGameStart">Video Game Start</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="videoType"><span data-translate="voess2App.video.videoType">Video Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="game.gameName"><span data-translate="voess2App.video.game">Game</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="team1.teamName"><span data-translate="voess2App.video.team1">Team 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="team2.teamName"><span data-translate="voess2App.video.team2">Team 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tournament.tournamentName"><span data-translate="voess2App.video.tournament">Tournament</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="video in vm.videos track by video.id">
+                    <td><a ui-sref="videovoess-detail({id:video.id})">{{video.id}}</a></td>
+                    <td>{{video.videoName}}</td>
+                    <td>{{video.videoDuration}}</td>
+                    <td>{{video.videoDate | date:'medium'}}</td>
+                    <td>{{video.videoViewerCount}}</td>
+                    <td>{{video.videoViewerCountLive}}</td>
+                    <td>{{video.videoUrl}}</td>
+                    <td>
+                        <a ng-if="video.videoBlob" ng-click="vm.openFile(video.videoBlobContentType, video.videoBlob)" data-translate="entity.action.open">open</a>
+                        <span ng-if="video.videoBlob">{{video.videoBlobContentType}}, {{vm.byteSize(video.videoBlob)}}</span>
+                    </td>
+                    <td>
+                        <a ng-if="video.videoCover" ng-click="vm.openFile(video.videoCoverContentType, video.videoCover)">
+                            <img data-ng-src="{{'data:' + video.videoCoverContentType + ';base64,' + video.videoCover}}" style="max-height: 30px;" alt="video image"/>
+                        </a>
+                        <span ng-if="video.videoCover">{{video.videoCoverContentType}}, {{vm.byteSize(video.videoCover)}}</span>
+                    </td>
+                    <td>{{video.videoPicks}}</td>
+                    <td>{{video.videoGameStart}}</td>
+                    <td data-translate="{{'voess2App.TipusVideo.' + video.videoType}}">{{video.videoType}}</td>
+                    <td>
+                        <a ui-sref="gamevoess-detail({id:video.game.id})">{{video.game.gameName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="teamvoess-detail({id:video.team1.id})">{{video.team1.teamName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="teamvoess-detail({id:video.team2.id})">{{video.team2.teamName}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="tournamentvoess-detail({id:video.tournament.id})">{{video.tournament.tournamentName}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="videovoess-detail({id:video.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="videovoess.edit({id:video.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="videovoess.delete({id:video.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

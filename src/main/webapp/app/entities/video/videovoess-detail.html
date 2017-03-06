@@ -1,0 +1,93 @@
+
+<div>
+    <h2><span data-translate="voess2App.video.detail.title">Video</span> {{vm.video.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="voess2App.video.videoName">Video Name</span></dt>
+        <dd>
+            <span>{{vm.video.videoName}}</span>
+        </dd>
+        <dt><span data-translate="voess2App.video.videoDuration">Video Duration</span></dt>
+        <dd>
+            <span>{{vm.video.videoDuration}}</span>
+        </dd>
+        <dt><span data-translate="voess2App.video.videoDate">Video Date</span></dt>
+        <dd>
+            <span>{{vm.video.videoDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="voess2App.video.videoViewerCount">Video Viewer Count</span></dt>
+        <dd>
+            <span>{{vm.video.videoViewerCount}}</span>
+        </dd>
+        <dt><span data-translate="voess2App.video.videoViewerCountLive">Video Viewer Count Live</span></dt>
+        <dd>
+            <span>{{vm.video.videoViewerCountLive}}</span>
+        </dd>
+        <dt><span data-translate="voess2App.video.videoUrl">Video Url</span></dt>
+        <dd>
+            <span>{{vm.video.videoUrl}}</span>
+        </dd>
+        <dt><span data-translate="voess2App.video.videoBlob">Video Blob</span></dt>
+        <dd>
+            <div ng-if="vm.video.videoBlob">
+                <a ng-click="vm.openFile(vm.video.videoBlobContentType, vm.video.videoBlob)" data-translate="entity.action.open">open</a>
+                {{vm.video.videoBlobContentType}}, {{vm.byteSize(vm.video.videoBlob)}}
+            </div>
+        </dd>
+        <dt><span data-translate="voess2App.video.videoCover">Video Cover</span></dt>
+        <dd>
+            <div ng-if="vm.video.videoCover">
+                <a ng-click="vm.openFile(vm.video.videoCoverContentType, vm.video.videoCover)">
+                    <img data-ng-src="{{'data:' + vm.video.videoCoverContentType + ';base64,' + vm.video.videoCover}}" style="max-width: 100%;" alt="video image"/>
+                </a>
+                {{vm.video.videoCoverContentType}}, {{vm.byteSize(vm.video.videoCover)}}
+            </div>
+        </dd>
+        <dt><span data-translate="voess2App.video.videoPicks">Video Picks</span></dt>
+        <dd>
+            <span>{{vm.video.videoPicks}}</span>
+        </dd>
+        <dt><span data-translate="voess2App.video.videoGameStart">Video Game Start</span></dt>
+        <dd>
+            <span>{{vm.video.videoGameStart}}</span>
+        </dd>
+        <dt><span data-translate="voess2App.video.videoType">Video Type</span></dt>
+        <dd>
+            <span data-translate="{{'voess2App.TipusVideo.' + vm.video.videoType}}">{{vm.video.videoType}}</span>
+        </dd>
+        <dt><span data-translate="voess2App.video.game">Game</span></dt>
+        <dd>
+            <a ui-sref="gamevoess-detail({id:vm.video.game.id})">{{vm.video.game.gameName}}</a>
+        </dd>
+        <dt><span data-translate="voess2App.video.team1">Team 1</span></dt>
+        <dd>
+            <a ui-sref="teamvoess-detail({id:vm.video.team1.id})">{{vm.video.team1.teamName}}</a>
+        </dd>
+        <dt><span data-translate="voess2App.video.team2">Team 2</span></dt>
+        <dd>
+            <a ui-sref="teamvoess-detail({id:vm.video.team2.id})">{{vm.video.team2.teamName}}</a>
+        </dd>
+        <dt><span data-translate="voess2App.video.tournament">Tournament</span></dt>
+        <dd>
+            <a ui-sref="tournamentvoess-detail({id:vm.video.tournament.id})">{{vm.video.tournament.tournamentName}}</a>
+        </dd>
+        <dt><span data-translate="voess2App.video.player">Player</span></dt>
+        <dd>
+            <span ng-repeat="player in vm.video.players">
+                <a ui-sref="playervoess-detail({id: player.id})">{{player.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="videovoess-detail.edit({id:vm.video.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,24 @@
+{
+    "voess2App": {
+        "userFavVideo" : {
+            "home": {
+                "title": "User Fav Videos",
+                "createLabel": "Create a new User Fav Video",
+                "createOrEditLabel": "Create or edit a User Fav Video",
+                "search": "Search for User Fav Video"
+            },
+            "created": "A new User Fav Video is created with identifier {{ param }}",
+            "updated": "A User Fav Video is updated with identifier {{ param }}",
+            "deleted": "A User Fav Video is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete User Fav Video {{ id }}?"
+            },
+            "detail": {
+                "title": "User Fav Video"
+            },
+            "startDateTime": "Start Date Time",
+            "user": "User",
+            "video": "Video"
+        }
+    }
+}

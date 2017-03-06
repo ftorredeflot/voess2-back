@@ -1,0 +1,11 @@
+{
+    "voess2App": {
+        "SexGender" : {
+            "null": "",
+            "MALE": "MALE",
+            "FEMALE": "FEMALE",
+            "OTHER": "OTHER",
+            "ALIEN": "ALIEN"
+        }
+    }
+}

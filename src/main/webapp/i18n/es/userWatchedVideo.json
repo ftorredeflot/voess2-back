@@ -1,0 +1,24 @@
+{
+    "voess2App": {
+        "userWatchedVideo" : {
+            "home": {
+                "title": "User Watched Videos",
+                "createLabel": "Crear nuevo User Watched Video",
+                "createOrEditLabel": "Crear o editar User Watched Video",
+                "search": "Search for User Watched Video"
+            },
+            "created": "Un nuevo User Watched Video ha sido creado con el identificador {{ param }}",
+            "updated": "Un User Watched Video ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un User Watched Video ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar User Watched Video {{ id }}?"
+            },
+            "detail": {
+                "title": "User Watched Video"
+            },
+            "startDateTime": "Start Date Time",
+            "user": "User",
+            "video": "Video"
+        }
+    }
+}

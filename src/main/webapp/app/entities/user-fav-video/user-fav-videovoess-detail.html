@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span data-translate="voess2App.userFavVideo.detail.title">User Fav Video</span> {{vm.userFavVideo.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="voess2App.userFavVideo.startDateTime">Start Date Time</span></dt>
+        <dd>
+            <span>{{vm.userFavVideo.startDateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="voess2App.userFavVideo.user">User</span></dt>
+        <dd>
+            {{vm.userFavVideo.user.login}}
+        </dd>
+        <dt><span data-translate="voess2App.userFavVideo.video">Video</span></dt>
+        <dd>
+            <a ui-sref="videovoess-detail({id:vm.userFavVideo.video.id})">{{vm.userFavVideo.video.videoName}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="user-fav-videovoess-detail.edit({id:vm.userFavVideo.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
