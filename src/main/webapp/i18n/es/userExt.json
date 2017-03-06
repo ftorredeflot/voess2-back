@@ -16,8 +16,8 @@
             "detail": {
                 "title": "User Ext"
             },
-            "userAge": "User Age",
-            "userSex": "User Sex",
+            "userAge": "Edad",
+            "userSex": "Sexo",
             "userImage": "User Image",
             "user": "User"
         }

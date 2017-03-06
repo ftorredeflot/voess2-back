@@ -5,6 +5,7 @@ import java.time.ZonedDateTime;
 import java.util.Set;
 
 import com.kdejf.voess.domain.User;
+import com.kdejf.voess.domain.enumeration.SexGender;
 import com.kdejf.voess.service.dto.UserDTO;
 import javax.validation.constraints.Size;
 
@@ -21,6 +22,10 @@ public class ManagedUserVM extends UserDTO {
     private String createdBy;
 
     private ZonedDateTime createdDate;
+
+    private Integer age;
+
+    private SexGender gender;
 
     private String lastModifiedBy;
 
@@ -79,6 +84,14 @@ public class ManagedUserVM extends UserDTO {
         this.createdDate = createdDate;
     }
 
+    public SexGender getGender() {
+        return gender;
+    }
+
+    public void setGender(SexGender gender) {
+        this.gender = gender;
+    }
+
     public String getLastModifiedBy() {
         return lastModifiedBy;
     }
@@ -94,7 +107,8 @@ public class ManagedUserVM extends UserDTO {
     public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
     }
-
+    public Integer getAge() { return age; }
+    public void setAge(Integer age) { this.age = age;}
     public String getPassword() {
         return password;
     }

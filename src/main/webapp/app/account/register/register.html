@@ -112,19 +112,52 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="control-label" data-translate="voess2App.userExt.userAge" for="field_userAge">User Age</label>
+                    <input type="number" class="form-control" name="userAge" id="field_userAge"
+                           ng-model="vm.registerAccount.age"
+                           required />
+                    <div ng-show="editForm.userAge.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.userAge.$error.required" data-translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="editForm.userAge.$error.number" data-translate="entity.validation.number">
+                            This field should be a number.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" data-translate="voess2App.userExt.userSex" for="field_userSex">User Sex</label>
+                    <select class="form-control" name="userSex" ng-model="vm.registerAccount.gender" id="field_userSex" required>
+                        <option value="MALE" data-translate="voess2App.SexGender.MALE">MALE</option>
+                        <option value="FEMALE" data-translate="voess2App.SexGender.FEMALE">FEMALE</option>
+                        <option value="OTHER" data-translate="voess2App.SexGender.OTHER">OTHER</option>
+                        <option value="ALIEN" data-translate="voess2App.SexGender.ALIEN">ALIEN</option>
+                    </select>
+                    <div ng-show="editForm.userSex.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.userSex.$error.required" data-translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.button">Register</button>
             </form>
             <p></p>
-            <div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
+          <!--  <div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
                 If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
             </div>
         </div>
-        <div class="col-md-4">
+        <!--<div class="col-md-4">
             <br/>
             <jh-social ng-provider="google"></jh-social>
             <jh-social ng-provider="facebook"></jh-social>
             <jh-social ng-provider="twitter"></jh-social>
             <!-- jhipster-needle-add-social-button -->
-        </div>
+        <!--</div>-->
     </div>
 </div>
