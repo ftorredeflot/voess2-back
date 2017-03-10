@@ -1,41 +1,166 @@
 <div ng-cloak>
     <div class="row">
-        <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
-        </div>
-        <div class="col-md-8">
-            <h1 data-translate="home.title">Welcome, Java Hipster!</h1>
-            <p class="lead" data-translate="home.subtitle">This is your homepage</p>
-
-            <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
-                    You are logged in as user "{{vm.account.login}}".
-                </div>
-
-                <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>
-                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-                </div>
-
-                <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.register" translate-compile>
-                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
-                </div>
+        <div class="col-md-12">
+            <div class="center_text">
+                <h1 data-translate="home.title">Welcome to VOESS! </h1>
+                <p class="lead" data-translate="home.subtitle">A place where you wont be spoiled!</p>
             </div>
 
-            <p data-translate="home.question">
-                If you have any question on JHipster:
-            </p>
+            <div class=".bg-info">
+                <img src="content/images/imagen_prueba.jpg" width="100%" height="80%" alt="logo"/>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="center_text">
+                <div ng-switch="vm.isAuthenticated()">
+                    <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message"
+                         translate-values="{username: '{{vm.account.login}}'}">
+                        You are logged in as user "{{vm.account.login}}".
+                    </div>
+                </div>
 
-            <ul>
-                <li><a href="http://jhipster.github.io/" target="_blank" data-translate="home.link.homepage">JHipster homepage</a></li>
-                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" data-translate="home.link.stackoverflow">JHipster on Stack Overflow</a></li>
-                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" data-translate="home.link.bugtracker">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" data-translate="home.link.chat">JHipster public chat room</a></li>
-                <li><a href="https://twitter.com/java_hipster" target="_blank"  data-translate="home.link.follow">follow @java_hipster on Twitter</a></li>
-            </ul>
+                <br>
 
-            <p>
-             <span data-translate="home.like">If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank" data-translate="home.github">Github</a>!
-            </p>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <div id="tournament1">
+                                <!-- img -->
+                                <div id="demo">
+                                    <!--text-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+
+
+                <h2>Escoge un juego y comienza a ver una partida!</h2>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/leagueoflegends.jpg" width="70%" height="70%"
+                                 alt="leagueoflegends"/>
+                        </div>
+                        <div class="row">League of Legends</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/dota2.jpg" width="70%" height="70%" alt="dota2"/>
+                        </div>
+                        <div class="row">Dota 2</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/hearthstone.jpg" width="70%" height="70%"
+                                 alt="hearthstone"/>
+                        </div>
+                        <div class="row">Hearthstone</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/overwatch.jpg" width="70%" height="70%" alt="overwatch"/>
+                        </div>
+                        <div class="row">Overwatch</div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/leagueoflegends.jpg" width="70%" height="70%"
+                                 alt="leagueoflegends"/>
+                        </div>
+                        <div class="row">League of Legends</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/dota2.jpg" width="70%" height="70%" alt="dota2"/>
+                        </div>
+                        <div class="row">Dota 2</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/hearthstone.jpg" width="70%" height="70%"
+                                 alt="hearthstone"/>
+                        </div>
+                        <div class="row">Hearthstone</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/overwatch.jpg" width="70%" height="70%" alt="overwatch"/>
+                        </div>
+                        <div class="row">Overwatch</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/leagueoflegends.jpg" width="70%" height="70%"
+                                 alt="leagueoflegends"/>
+                        </div>
+                        <div class="row">League of Legends</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/dota2.jpg" width="70%" height="70%" alt="dota2"/>
+                        </div>
+                        <div class="row">Dota 2</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/hearthstone.jpg" width="70%" height="70%"
+                                 alt="hearthstone"/>
+                        </div>
+                        <div class="row">Hearthstone</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/overwatch.jpg" width="70%" height="70%" alt="overwatch"/>
+                        </div>
+                        <div class="row">Overwatch</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-warning">
+                            <ul class="list-group">
+                                <li class="list-group-item">Programa Semanal:</li>
+                                <li class="list-group-item">1-Entrevista con Skoj <span class="badge"></span></li>
+                                <li class="list-group-item">2-Analisis del metagame <span class="badge"></span></li>
+                                <li class="list-group-item">3-Darkhorse de la competicion <span class="badge"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning">
+                            <ul class="list-group">
+                                <li class="list-group-item">Featured Stuff:</li>
+                                <li class="list-group-item">1-Algo algo Pentakill Koreano<span class="badge"></span></li>
+                                <li class="list-group-item">2-Ching Tournament <span class="badge"></span></li>
+                                <li class="list-group-item">3-Mistfits vs 3CT <span class="badge"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+
+                <div class="alert alert-warning" ng-switch-when="false"
+                     data-translate="global.messages.info.register" translate-compile>
+                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new
+                    account</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

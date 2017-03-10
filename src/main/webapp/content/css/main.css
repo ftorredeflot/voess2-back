@@ -426,3 +426,132 @@ Social Buttons
 }
 
 /* jhipster-needle-css-add-main JHipster will add new css style */
+
+/*==============================================
+Kelvin
+===============================================*/
+.center_text{
+    text-align: center;
+}
+/*==============================================
+Dropdown
+===============================================*/
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+/*==============================================
+Css tournament countdown
+===============================================*/
+
+
+#tournament1 {
+    background-image: url("../images/next_tournaments/lcs_league.jpg");
+    width: 100%;
+    height: 450px;
+    background-position: center;
+}
+
+#demo {
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: 50px;
+    color: white;
+    position: relative;
+    top: 68%;
+}
+
+
+/*==============================================
+Dropdown propio
+===============================================*/
+
+.dropbtnn {
+    background-color: #2B6EA1;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.dropdownn {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+
+.dropdown-contentn {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: 100%;
+}
+
+
+.dropdown-contentn a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+
+.dropdown-contentn a:hover {
+    background-color: #f1f1f1;
+    width: 100%;}
+
+
+.dropdownn:hover .dropdown-contentn {
+    display: block;
+    width: 100%;
+}
+
+.dropdownn:hover .dropbtnn {
+    background-color: #00b3ee;
+    width: 100%;
+}
