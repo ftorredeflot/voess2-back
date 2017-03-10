@@ -48,7 +48,7 @@ local.properties
 ######################
 # Intellij
 ######################
-.idea/
+.idea
 *.iml
 *.iws
 *.ipr
@@ -135,5 +135,4 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
-.idea
 src/main/resources/config/application-dev.yml
