@@ -24,6 +24,7 @@
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('user-management');
                     $translatePartialLoader.addPart('userExt');
                     $translatePartialLoader.addPart('sexGender');
                     $translatePartialLoader.addPart('register');

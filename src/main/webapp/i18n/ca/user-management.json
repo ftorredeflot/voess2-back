@@ -17,6 +17,7 @@
         "login": "Login",
         "firstName": "Nom",
         "lastName": "Cognom",
+        "lastName.placeholder": "Cognom",
         "email": "Email",
         "activated": "Activat",
         "deactivated": "Desactivat",

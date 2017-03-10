@@ -17,6 +17,7 @@
         "login": "Login",
         "firstName": "Nombre",
         "lastName": "Apellidos",
+        "lastName.placeholder": "Apellidos",
         "email": "Email",
         "activated": "Activado",
         "deactivated": "Desactivado",

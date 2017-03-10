@@ -34,10 +34,15 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="userManagement.firstName">First Name</label>
-            <input type="text" class="form-control" name="firstName"
-                   ng-model="vm.user.firstName" ng-maxlength="50">
+            <input type="text" class="form-control" required name="firstName"
+                   ng-model="vm.user.firstName"  ng-maxlength="50">
 
             <div ng-show="editForm.firstName.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.firstName.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+
                 <p class="help-block"
                    ng-show="editForm.firstName.$error.maxlength" data-translate="entity.validation.maxlength"
                    translate-value-max="50">
@@ -48,9 +53,13 @@
         <div class="form-group">
             <label data-translate="userManagement.lastName">Last Name</label>
             <input type="text" class="form-control" name="lastName"
-                   ng-model="vm.user.lastName" ng-maxlength="50">
+                   ng-model="vm.user.lastName" required ng-maxlength="50">
 
             <div ng-show="editForm.lastName.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.lastName.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
                 <p class="help-block"
                    ng-show="editForm.lastName.$error.maxlength" data-translate="entity.validation.maxlength"
                    translate-value-max="50">

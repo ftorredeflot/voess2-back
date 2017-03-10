@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-4">
+        <div class="col-md-4 col-md-offset-4">
             <h1 data-translate="register.title">Registration</h1>
 
             <div class="alert alert-success" ng-show="vm.success" data-translate="register.messages.success">
@@ -47,6 +47,42 @@
                                ng-show="form.login.$error.pattern" data-translate="register.messages.validate.login.pattern">
                             Your username can only contain lower-case letters and digits.
                     </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" data-translate="userManagement.firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName"
+                           ng-model="vm.registerAccount.firstName" required ng-maxlength="50" placeholder="{{'userManagement.firstName.placeholder' | translate}}" >
+
+                    <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
+                        <p class="help-block"
+                           ng-show="form.firstName.$error.required" data-translate="entity.validation.required">
+                            This field is required.
+                        </p>
+
+                        <p class="help-block"
+                           ng-show="form.firstName.$error.maxlength" data-translate="entity.validation.maxlength"
+                           translate-value-max="50">
+                            This field cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-translate="userManagement.lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName"
+                           ng-model="vm.registerAccount.lastName" required ng-maxlength="50" placeholder="{{'userManagement.lastName.placeholder' | translate}}" >
+
+                    <div ng-show="form.lastName.$dirty && form.firstName.$invalid">
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.required" data-translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.maxlength" data-translate="entity.validation.maxlength"
+                           translate-value-max="50">
+                            This field cannot be longer than 50 characters.
+                        </p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -114,16 +150,16 @@
 
                 <div class="form-group">
                     <label class="control-label" data-translate="voess2App.userExt.userAge" for="field_userAge">User Age</label>
-                    <input type="number" class="form-control" name="userAge" id="field_userAge"
+                    <input type="number" class="form-control" name="age" id="field_userAge"
                            ng-model="vm.registerAccount.age"
-                           required />
-                    <div ng-show="editForm.userAge.$invalid">
+                           required placeholder="20" />
+                    <div ng-show="form.age.$dirty && form.firstName.$invalid">
                         <p class="help-block"
-                           ng-show="editForm.userAge.$error.required" data-translate="entity.validation.required">
+                           ng-show="form.age.$error.required" data-translate="entity.validation.required">
                             This field is required.
                         </p>
                         <p class="help-block"
-                           ng-show="editForm.userAge.$error.number" data-translate="entity.validation.number">
+                           ng-show="form.age.$error.number" data-translate="entity.validation.number">
                             This field should be a number.
                         </p>
                     </div>
@@ -131,7 +167,7 @@
 
                 <div class="form-group">
                     <label class="control-label" data-translate="voess2App.userExt.userSex" for="field_userSex">User Sex</label>
-                    <select class="form-control" name="userSex" ng-model="vm.registerAccount.gender" id="field_userSex" required>
+                    <select class="form-control" name="gender" ng-model="vm.registerAccount.gender" id="field_userSex" required>
                         <option value="MALE" data-translate="voess2App.SexGender.MALE">MALE</option>
                         <option value="FEMALE" data-translate="voess2App.SexGender.FEMALE">FEMALE</option>
                         <option value="OTHER" data-translate="voess2App.SexGender.OTHER">OTHER</option>
