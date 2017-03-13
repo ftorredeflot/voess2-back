@@ -8,9 +8,10 @@
 
     function Player ($resource) {
         var resourceUrl =  'api/players/:id';
-
+        var urls =  'api/user-exts/:id';
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+            'patata': { method: 'GET', isArray: true, url:urls},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

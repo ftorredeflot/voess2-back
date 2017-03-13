@@ -11,6 +11,7 @@
         var vm = this;
 
         vm.players = [];
+        vm.patatas=[];
         vm.loadPage = loadPage;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.page = 0;
@@ -31,6 +32,9 @@
                 size: vm.itemsPerPage,
                 sort: sort()
             }, onSuccess, onError);
+            Player.patata({
+
+            }, onSuccesspapa, onError);
             function sort() {
                 var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
                 if (vm.predicate !== 'id') {
@@ -44,6 +48,14 @@
                 vm.totalItems = headers('X-Total-Count');
                 for (var i = 0; i < data.length; i++) {
                     vm.players.push(data[i]);
+                }
+            }
+
+            function onSuccesspapa(data, headers) {
+                vm.links = ParseLinks.parse(headers('link'));
+                vm.totalItems = headers('X-Total-Count');
+                for (var i = 0; i < data.length; i++) {
+                    vm.patatas.push(data[i]);
                 }
             }
 

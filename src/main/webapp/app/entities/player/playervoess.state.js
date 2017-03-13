@@ -25,6 +25,7 @@
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('userExt');
                     $translatePartialLoader.addPart('player');
                     $translatePartialLoader.addPart('sexGender');
                     $translatePartialLoader.addPart('global');
