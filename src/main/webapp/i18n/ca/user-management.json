@@ -16,6 +16,7 @@
         },
         "login": "Login",
         "firstName": "Nom",
+        "firstName.placeholder": "Nom",
         "lastName": "Cognom",
         "lastName.placeholder": "Cognom",
         "email": "Email",
