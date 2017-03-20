@@ -1,9 +1,16 @@
 package com.kdejf.voess.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.kdejf.voess.domain.UserWatchedVideo;
+import com.kdejf.voess.domain.User;
 import com.kdejf.voess.domain.Video;
 
+import com.kdejf.voess.security.SecurityUtils;
+
 import com.kdejf.voess.repository.VideoRepository;
+import com.kdejf.voess.repository.UserRepository;
+import com.kdejf.voess.repository.UserWatchedVideoRepository;
+
 import com.kdejf.voess.web.rest.util.HeaderUtil;
 import com.kdejf.voess.web.rest.util.PaginationUtil;
 
@@ -22,6 +29,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.time.ZonedDateTime;
 
 /**
  * REST controller for managing Video.
@@ -31,10 +39,13 @@ import java.util.Optional;
 public class VideoResource {
 
     private final Logger log = LoggerFactory.getLogger(VideoResource.class);
-        
+
     @Inject
     private VideoRepository videoRepository;
-
+    @Inject
+    private UserRepository userRepository;
+    @Inject
+    private UserWatchedVideoRepository userwatchedRepository;
     /**
      * POST  /videos : Create a new video.
      *
@@ -54,6 +65,34 @@ public class VideoResource {
             .headers(HeaderUtil.createEntityCreationAlert("video", result.getId().toString()))
             .body(result);
     }
+
+    /**
+     * POST  /video/{id}/userPlayed : Create a new liked video.
+     *
+     * @param id of video
+     * @return UserWatchedVideo
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/video/{id}/userPlayed")
+    @Timed
+    public ResponseEntity<UserWatchedVideo> userViewed(@PathVariable Long id) throws URISyntaxException {
+
+    User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        Video video = videoRepository.findOne(id);
+        ZonedDateTime today = ZonedDateTime.now();
+        UserWatchedVideo u = new UserWatchedVideo();
+        u.setStartDateTime(today);
+        u.setUser(user);
+        u.setVideo(video);
+        //Song_user result = song_userRepository.save(song_user);
+        UserWatchedVideo result= userwatchedRepository.save(u);
+        return ResponseEntity.created(new URI("/api/user-watched-videos" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert("userWatchedVideo", result.getId().toString()))
+            .body(result);
+
+
+    }
+
 
     /**
      * PUT  /videos : Updates an existing video.
