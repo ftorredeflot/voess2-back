@@ -75,7 +75,7 @@ public class VideoResource {
      */
     @PostMapping("/video/{id}/userPlayed")
     @Timed
-    public ResponseEntity<UserWatchedVideo> userViewed(@PathVariable Long id) throws URISyntaxException {
+    public ResponseEntity<UserWatchedVideo> userViewedset(@PathVariable Long id) throws URISyntaxException {
 
     User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
         Video video = videoRepository.findOne(id);
@@ -150,6 +150,21 @@ public class VideoResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+    @GetMapping("/video/{id}/userPlayed")
+    @Timed
+    public ResponseEntity<UserWatchedVideo> userViewedget(@PathVariable Long id) throws URISyntaxException {
+        List<UserWatchedVideo> list =userwatchedRepository.findByuser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
+        UserWatchedVideo like= list.get(list.size()-1);
+
+        return Optional.ofNullable(like)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+
 
     /**
      * DELETE  /videos/:id : delete the "id" video.

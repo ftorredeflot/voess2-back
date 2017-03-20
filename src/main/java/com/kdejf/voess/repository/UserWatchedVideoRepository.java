@@ -1,6 +1,7 @@
 package com.kdejf.voess.repository;
 
 import com.kdejf.voess.domain.UserWatchedVideo;
+import com.kdejf.voess.domain.User;
 
 import org.springframework.data.jpa.repository.*;
 
@@ -14,5 +15,7 @@ public interface UserWatchedVideoRepository extends JpaRepository<UserWatchedVid
 
     @Query("select userWatchedVideo from UserWatchedVideo userWatchedVideo where userWatchedVideo.user.login = ?#{principal.username}")
     List<UserWatchedVideo> findByUserIsCurrentUser();
+
+    List<UserWatchedVideo> findByuser(User user);
 
 }
