@@ -2,6 +2,7 @@ package com.kdejf.voess.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.kdejf.voess.domain.UserWatchedVideo;
+import com.kdejf.voess.domain.UserFavVideo;
 import com.kdejf.voess.domain.User;
 import com.kdejf.voess.domain.Video;
 
@@ -10,6 +11,7 @@ import com.kdejf.voess.security.SecurityUtils;
 import com.kdejf.voess.repository.VideoRepository;
 import com.kdejf.voess.repository.UserRepository;
 import com.kdejf.voess.repository.UserWatchedVideoRepository;
+import com.kdejf.voess.repository.UserFavVideoRepository;
 
 import com.kdejf.voess.web.rest.util.HeaderUtil;
 import com.kdejf.voess.web.rest.util.PaginationUtil;
@@ -46,6 +48,11 @@ public class VideoResource {
     private UserRepository userRepository;
     @Inject
     private UserWatchedVideoRepository userwatchedRepository;
+    @Inject
+    private UserFavVideoRepository userfavRepository;
+
+
+
     /**
      * POST  /videos : Create a new video.
      *
@@ -84,7 +91,6 @@ public class VideoResource {
         u.setStartDateTime(today);
         u.setUser(user);
         u.setVideo(video);
-        //Song_user result = song_userRepository.save(song_user);
         UserWatchedVideo result= userwatchedRepository.save(u);
         return ResponseEntity.created(new URI("/api/user-watched-videos" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("userWatchedVideo", result.getId().toString()))
@@ -163,6 +169,20 @@ public class VideoResource {
         UserWatchedVideo like= list.get(list.size()-1);
 
         return Optional.ofNullable(like)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/video/{id}/userFav")
+    @Timed
+    public ResponseEntity<UserFavVideo> userFavget(@PathVariable Long id) throws URISyntaxException {
+        User user=userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        Video video= videoRepository.findOne(id);
+        UserFavVideo exist = userfavRepository.findByuserandvideo(user, video);
+
+        return Optional.ofNullable(exist)
             .map(result -> new ResponseEntity<>(
                 result,
                 HttpStatus.OK))
