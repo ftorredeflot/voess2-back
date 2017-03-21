@@ -73,6 +73,38 @@ public class VideoResource {
             .body(result);
     }
 
+
+    @PostMapping("/video/{id}/userFav")
+    @Timed
+    public ResponseEntity<UserFavVideo> userFavset(@PathVariable Long id) throws URISyntaxException {
+        User user=userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        Video video= videoRepository.findOne(id);
+        UserFavVideo exist = userfavRepository.findByuserandvideo(user, video);
+        ZonedDateTime today = ZonedDateTime.now();
+
+        if(exist!=null){
+            log.debug("REST request to save UserFavVideo : {}", exist);
+            //exist.setStartDateTime(today);
+            //userfavRepository.save(exist);
+
+        }
+        else{
+            exist= new UserFavVideo();
+            exist.setVideo(video);
+            exist.setUser(user);
+            exist.setStartDateTime(today);
+            userfavRepository.save(exist);
+        }
+
+        return Optional.ofNullable(exist)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+
+
     /**
      * POST  /video/{id}/userPlayed : Create a new liked video.
      *
