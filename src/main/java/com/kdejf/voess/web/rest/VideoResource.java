@@ -150,7 +150,12 @@ public class VideoResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
+    /**
+     * GET  /video/{id}/userPlayed : get the "id" video.
+     *
+     * @param id the id of the video
+     * @return the ResponseEntity with status 200 (OK) and with body the video, or with status 404 (Not Found)
+     */
     @GetMapping("/video/{id}/userPlayed")
     @Timed
     public ResponseEntity<UserWatchedVideo> userViewedget(@PathVariable Long id) throws URISyntaxException {
