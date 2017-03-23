@@ -19,7 +19,8 @@ public interface UserFavVideoRepository extends JpaRepository<UserFavVideo,Long>
     List<UserFavVideo> findByUserIsCurrentUser();
 
 
-    @Query("select userFavVideo from UserFavVideo userFavVideo where userFavVideo.user= :u and userFavVideo.video= :v")
-    UserFavVideo findByuserandvideo(@Param("u") User user,@Param("v") Video video);
+   // @Query("select userFavVideo from UserFavVideo userFavVideo where userFavVideo.user= :u and userFavVideo.video= :v")
+   // UserFavVideo findByuserandvideo(@Param("u") User user,@Param("v") Video video);
 
+    UserFavVideo findByUserAndVideoId(User user, Long idVideo);
 }

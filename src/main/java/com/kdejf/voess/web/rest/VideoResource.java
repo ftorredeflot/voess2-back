@@ -78,8 +78,8 @@ public class VideoResource {
     @Timed
     public ResponseEntity<UserFavVideo> userFavset(@PathVariable Long id) throws URISyntaxException {
         User user=userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
-        Video video= videoRepository.findOne(id);
-        UserFavVideo exist = userfavRepository.findByuserandvideo(user, video);
+        //Video video= videoRepository.findOne(id);
+        UserFavVideo exist = userfavRepository.findByUserAndVideoId(user, id);
         ZonedDateTime today = ZonedDateTime.now();
 
         if(exist!=null){
@@ -90,7 +90,7 @@ public class VideoResource {
         }
         else{
             exist= new UserFavVideo();
-            exist.setVideo(video);
+            exist.setVideo(videoRepository.findOne(id));
             exist.setUser(user);
             exist.setStartDateTime(today);
             userfavRepository.save(exist);
@@ -211,8 +211,8 @@ public class VideoResource {
     @Timed
     public ResponseEntity<UserFavVideo> userFavget(@PathVariable Long id) throws URISyntaxException {
         User user=userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
-        Video video= videoRepository.findOne(id);
-        UserFavVideo exist = userfavRepository.findByuserandvideo(user, video);
+        //Video video= videoRepository.findOne(id);
+        UserFavVideo exist = userfavRepository.findByUserAndVideoId(user, id);
 
         return Optional.ofNullable(exist)
             .map(result -> new ResponseEntity<>(
