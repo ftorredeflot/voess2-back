@@ -432,6 +432,10 @@ Kelvin
 .center_text{
     text-align: center;
 }
+
+.transparente{
+    background-color: rgba(255, 255, 255, 0.6)!important;
+}
 /*==============================================
 Dropdown
 ===============================================*/
@@ -516,7 +520,7 @@ Dropdown propio
 .dropdownn {
     position: relative;
     display: inline-block;
-    width: 100%;
+    width: 107%;
 }
 
 
@@ -554,3 +558,4 @@ Dropdown propio
     background-color: #00b3ee;
     width: 100%;
 }
+
