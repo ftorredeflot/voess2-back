@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -7,7 +7,7 @@
 
     SettingsController.$inject = ['Principal', 'Auth', 'JhiLanguageService', '$translate'];
 
-    function SettingsController (Principal, Auth, JhiLanguageService, $translate) {
+    function SettingsController(Principal, Auth, JhiLanguageService, $translate) {
         var vm = this;
 
         vm.error = null;
@@ -25,29 +25,27 @@
                 firstName: account.firstName,
                 langKey: account.langKey,
                 lastName: account.lastName,
-                login: account.login,
-                userSex: account.userSex,
-                userAge: account.userAge
+                login: account.login
             };
         };
 
-        Principal.identity().then(function(account) {
+        Principal.identity().then(function (account) {
             vm.settingsAccount = copyAccount(account);
         });
 
-        function save () {
-            Auth.updateAccount(vm.settingsAccount).then(function() {
+        function save() {
+            Auth.updateAccount(vm.settingsAccount).then(function () {
                 vm.error = null;
                 vm.success = 'OK';
-                Principal.identity(true).then(function(account) {
+                Principal.identity(true).then(function (account) {
                     vm.settingsAccount = copyAccount(account);
                 });
-                JhiLanguageService.getCurrent().then(function(current) {
+                JhiLanguageService.getCurrent().then(function (current) {
                     if (vm.settingsAccount.langKey !== current) {
                         $translate.use(vm.settingsAccount.langKey);
                     }
                 });
-            }).catch(function() {
+            }).catch(function () {
                 vm.success = null;
                 vm.error = 'ERROR';
             });

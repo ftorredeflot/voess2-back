@@ -89,42 +89,13 @@
                         </p>
                     </div>
                 </div>
-                <!--TODO mostrar información del usuario-->
+                <!--TODO arreglar-->
                 <div class="form-group">
-                    <label class="control-label" data-translate="voess2App.userExt.userAge" for="userAge">User
-                        Age</label>
-                    <input type="number" class="form-control" name="userAge" id="userAge"
-                           ng-model="vm.settingsAccount.userAge"
-                           required placeholder="20"/>
-                    <div ng-show="form.userAge.$dirty && form.firstName.$invalid">
-                        <p class="help-block"
-                           ng-show="form.userAge.$error.required" data-translate="entity.validation.required">
-                            This field is required.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.userAge.$error.number" data-translate="entity.validation.number">
-                            This field should be a number.
-                        </p>
-                    </div>
+                    <a ui-sref="user-extvoess.edit({id:userExt.id})">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp;
+                        <span data-translate="global.menu.entities.userExtvoess">User Extvoess</span>
+                    </a>
                 </div>
-                <div class="form-group">
-                    <label class="control-label" data-translate="voess2App.userExt.userSex" for="userSex">User
-                        Sex</label>
-                    <select class="form-control" name="userSex" ng-model="vm.settingsAccount.userSex" id="userSex"
-                            required>
-                        <option value="MALE" data-translate="voess2App.SexGender.MALE">MALE</option>
-                        <option value="FEMALE" data-translate="voess2App.SexGender.FEMALE">FEMALE</option>
-                        <option value="OTHER" data-translate="voess2App.SexGender.OTHER">OTHER</option>
-                        <option value="ALIEN" data-translate="voess2App.SexGender.ALIEN">ALIEN</option>
-                    </select>
-                    <div ng-show="editForm.userSex.$invalid">
-                        <p class="help-block"
-                           ng-show="editForm.userSex.$error.required" data-translate="entity.validation.required">
-                            This field is required.
-                        </p>
-                    </div>
-                </div>
-                <!--TODO imagen de usuario-->
                 <div class="form-group">
                     <label for="langKey" data-translate="settings.form.language">Language</label>
                     <select id="langKey" name="langKey" class="form-control" ng-model="vm.settingsAccount.langKey"
