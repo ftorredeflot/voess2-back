@@ -26,7 +26,7 @@
             "account": {
                 "main": "Compte",
                 "settings": "Ajustos",
-                "password": "Contrasenya",
+                "password": "Cambiar Contrasenya",
                 "sessions": "Sessions",
                 "login": "Autenticar",
                 "logout": "Finalitzar la sessió",

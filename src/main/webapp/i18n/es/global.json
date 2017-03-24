@@ -26,7 +26,7 @@
             "account": {
                 "main": "Cuenta",
                 "settings": "Ajustes",
-                "password": "Contraseña",
+                "password": "Cambiar Contraseña",
                 "sessions": "Sesiones",
                 "login": "Iniciar sesión",
                 "logout": "Cerrar la sesión",

@@ -89,6 +89,7 @@
                         </p>
                     </div>
                 </div>
+                <!--TODO mostrar información del usuario-->
                 <div class="form-group">
                     <label class="control-label" data-translate="voess2App.userExt.userAge" for="userAge">User
                         Age</label>
@@ -123,16 +124,22 @@
                         </p>
                     </div>
                 </div>
+                <!--TODO imagen de usuario-->
                 <div class="form-group">
                     <label for="langKey" data-translate="settings.form.language">Language</label>
                     <select id="langKey" name="langKey" class="form-control" ng-model="vm.settingsAccount.langKey"
                             ng-controller="JhiLanguageController as languageVm"
                             ng-options="code as (code | findLanguageFromKey) for code in languageVm.languages"></select>
                 </div>
-
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary"
                         data-translate="settings.form.button">Save
                 </button>
+                <div class="pad">
+                    <button type="button" ui-sref="password" class="bg-danger"><span
+                        class="glyphicon glyphicon-lock"></span>&nbsp;
+                        <span data-translate="global.menu.account.password">Change Password</span>
+                    </button>
+                </div>
             </form>
         </div>
     </div>

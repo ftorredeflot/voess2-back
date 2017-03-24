@@ -26,7 +26,7 @@
             "account": {
                 "main": "Account",
                 "settings": "Settings",
-                "password": "Password",
+                "password": "Change Password",
                 "sessions": "Sessions",
                 "login": "Sign in",
                 "logout": "Sign out",
