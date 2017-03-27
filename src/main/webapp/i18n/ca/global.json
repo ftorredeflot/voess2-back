@@ -21,6 +21,7 @@
                 "teamvoess": "Team",
                 "tournamentvoess": "Tournament",
                 "playervoess": "Player",
+                "streams": "Streams",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

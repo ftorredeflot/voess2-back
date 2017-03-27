@@ -1,0 +1,25 @@
+{
+    "voess2App": {
+        "streams" : {
+            "home": {
+                "title": "Streams",
+                "createLabel": "Create a new Streams",
+                "createOrEditLabel": "Create or edit a Streams",
+                "search": "Search for Streams"
+            },
+            "created": "A new Streams is created with identifier {{ param }}",
+            "updated": "A Streams is updated with identifier {{ param }}",
+            "deleted": "A Streams is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Streams {{ id }}?"
+            },
+            "detail": {
+                "title": "Streams"
+            },
+            "streamerName": "Streamer Name",
+            "streamerUrl": "Streamer Url",
+            "streamerPhoto": "Streamer Photo",
+            "streamerState": "Streamer State"
+        }
+    }
+}

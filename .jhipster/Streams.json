@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "streamerName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "streamerUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "streamerPhoto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "streamerState",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170327182951",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "streams",
+    "pagination": "no"
+}
