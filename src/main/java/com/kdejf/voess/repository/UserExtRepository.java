@@ -1,5 +1,6 @@
 package com.kdejf.voess.repository;
 
+import com.kdejf.voess.domain.User;
 import com.kdejf.voess.domain.UserExt;
 
 import org.springframework.data.jpa.repository.*;
@@ -11,5 +12,7 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface UserExtRepository extends JpaRepository<UserExt,Long> {
+
+    UserExt findByUserId(Long id);
 
 }

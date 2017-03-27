@@ -90,12 +90,10 @@
                     </div>
                 </div>
                 <!--TODO arreglar-->
-                <div class="form-group">
-                    <a ui-sref="user-extvoess.edit({id:userExt.id})">
-                        <span class="glyphicon glyphicon-plus"></span>&nbsp;
-                        <span data-translate="global.menu.entities.userExtvoess">User Extvoess</span>
-                    </a>
-                </div>
+                <button type="button" ui-sref="user-extvoess-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+                </button>
                 <div class="form-group">
                     <label for="langKey" data-translate="settings.form.language">Language</label>
                     <select id="langKey" name="langKey" class="form-control" ng-model="vm.settingsAccount.langKey"

@@ -29,6 +29,9 @@
                     $translatePartialLoader.addPart('userExt');
                     $translatePartialLoader.addPart('sexGender');
                     return $translate.refresh();
+                }],
+                entity: ['$stateParams', 'UserExt', function ($stateParams, UserExt) {
+                    return UserExt.getByUser({id: $stateParams.id}).$promise;
                 }]
             }
         });

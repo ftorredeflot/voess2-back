@@ -20,6 +20,16 @@
                     return data;
                 }
             },
+            'getByUser': {
+                            method: 'GET',
+                            transformResponse: function (data) {
+                                if (data) {
+                                    data = angular.fromJson(data);
+                                }
+                                return data;
+                            },
+                            url: 'api/user-exts/byUser/:id'
+                        },
             'update': { method:'PUT' }
         });
     }

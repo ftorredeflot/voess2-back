@@ -32,7 +32,7 @@ import java.util.Optional;
 public class UserExtResource {
 
     private final Logger log = LoggerFactory.getLogger(UserExtResource.class);
-        
+
     @Inject
     private UserExtRepository userExtRepository;
 
@@ -106,6 +106,18 @@ public class UserExtResource {
     public ResponseEntity<UserExt> getUserExt(@PathVariable Long id) {
         log.debug("REST request to get UserExt : {}", id);
         UserExt userExt = userExtRepository.findOne(id);
+        return Optional.ofNullable(userExt)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/user-exts/byUser/{id}")
+    @Timed
+    public ResponseEntity<UserExt> getUserExtByUser(@PathVariable Long id) {
+        log.debug("REST request to get UserExt : {}", id);
+        UserExt userExt = userExtRepository.findByUserId(id);
         return Optional.ofNullable(userExt)
             .map(result -> new ResponseEntity<>(
                 result,

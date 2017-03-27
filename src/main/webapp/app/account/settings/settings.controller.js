@@ -5,11 +5,11 @@
         .module('voess2App')
         .controller('SettingsController', SettingsController);
 
-    SettingsController.$inject = ['Principal', 'Auth', 'JhiLanguageService', '$translate'];
+    SettingsController.$inject = ['Principal', 'Auth', 'JhiLanguageService', '$translate', 'entity'];
 
-    function SettingsController(Principal, Auth, JhiLanguageService, $translate) {
+    function SettingsController(Principal, Auth, JhiLanguageService, $translate, entity) {
         var vm = this;
-
+        vm.userExt = entity;
         vm.error = null;
         vm.save = save;
         vm.settingsAccount = null;
