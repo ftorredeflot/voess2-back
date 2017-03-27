@@ -12,7 +12,11 @@ END Cambios Varios
 body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+    color: white;
+}
+
+.modal-header, .modal-body{
+    color: #000;
 }
 
 /* ==========================================================================
