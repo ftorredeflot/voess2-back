@@ -13,6 +13,6 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface UserExtRepository extends JpaRepository<UserExt,Long> {
 
-    UserExt findByUserId(Long id);
+//    UserExt findByUserId(Long id);
 
 }
