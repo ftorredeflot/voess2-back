@@ -18,4 +18,6 @@ public interface FriendshipRepository extends JpaRepository<Friendship,Long> {
     @Query("select friendship from Friendship friendship where friendship.frienshipTo.login = ?#{principal.username}")
     List<Friendship> findByFrienshipToIsCurrentUser();
 
+    Friendship findByFrienshipFromIdAndFrienshipToId(Long from,Long to);
+
 }

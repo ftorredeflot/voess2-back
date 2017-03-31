@@ -2,8 +2,11 @@ package com.kdejf.voess.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.kdejf.voess.domain.Friendship;
+import com.kdejf.voess.domain.User;
 
 import com.kdejf.voess.repository.FriendshipRepository;
+import com.kdejf.voess.repository.UserRepository;
+import com.kdejf.voess.security.SecurityUtils;
 import com.kdejf.voess.web.rest.util.HeaderUtil;
 import com.kdejf.voess.web.rest.util.PaginationUtil;
 
@@ -22,6 +25,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.time.ZonedDateTime;
 
 /**
  * REST controller for managing Friendship.
@@ -31,9 +35,12 @@ import java.util.Optional;
 public class FriendshipResource {
 
     private final Logger log = LoggerFactory.getLogger(FriendshipResource.class);
-        
+
     @Inject
     private FriendshipRepository friendshipRepository;
+
+    @Inject
+    private UserRepository userRepo;
 
     /**
      * POST  /friendships : Create a new friendship.
@@ -54,6 +61,40 @@ public class FriendshipResource {
             .headers(HeaderUtil.createEntityCreationAlert("friendship", result.getId().toString()))
             .body(result);
     }
+
+
+    @PostMapping("/new-frienship-to/{id}")
+    @Timed
+    public ResponseEntity<Friendship> createNewFriendship(@PathVariable Long id) throws URISyntaxException {
+        User user1 = userRepo.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        User user2 = userRepo.findOne(id);
+        Friendship exist = friendshipRepository.findByFrienshipFromIdAndFrienshipToId(user1.getId(), user2.getId());
+        ZonedDateTime today = ZonedDateTime.now();
+
+        if (exist != null) {
+            log.debug("REST request to save Friendship EXIST : {}", exist);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "exists", "A new friendship cannot already exist")).body(null);
+        }
+        else if(user1.getId()==user2.getId()){
+            log.debug("Recursive friendship");
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "recursivefriendship", "Recursive friendship")).body(null);
+        }
+        else {
+            Friendship friendship = new Friendship();
+            friendship.setFrienshipFrom(user1);
+            friendship.setFrienshipTo(user2);
+            friendship.setStartDateTime(today);
+            exist = friendshipRepository.save(friendship);
+            log.debug("REST request to save Friendship CREATED : {}", exist);
+        }
+        return Optional.ofNullable(exist)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+    }
+
 
     /**
      * PUT  /friendships : Updates an existing friendship.
