@@ -70,10 +70,19 @@ public class FriendshipResource {
         User user2 = userRepo.findOne(id);
         Friendship exist = friendshipRepository.findByFrienshipFromIdAndFrienshipToId(user1.getId(), user2.getId());
         ZonedDateTime today = ZonedDateTime.now();
-
-        if (exist != null) {
-            log.debug("REST request to save Friendship EXIST : {}", exist);
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "exists", "A new friendship cannot already exist")).body(null);
+        if(exist != null&& exist.getFinishDateTime()==null){
+             log.debug("REST request to save Friendship EXIST : {}", exist);
+           return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "exists", "A new friendship cannot already exist")).body(null);
+        }
+        else if (exist != null&& exist.getFinishDateTime()!=null) {
+            log.debug("REST request to save Friendship EXIST but UPDATE: {}", exist);
+            exist.setFinishDateTime(null);
+            exist.setStartDateTime(today);
+            friendshipRepository.save(exist);
+            log.debug("REST request to save Friendship AFTER UPDATE: {}", exist);
+            return ResponseEntity.ok()
+                .headers(HeaderUtil.createEntityUpdateAlert("friendship", exist.getId().toString()))
+                .body(exist);
         }
         else if(user1.getId()==user2.getId()){
             log.debug("Recursive friendship");
@@ -86,12 +95,11 @@ public class FriendshipResource {
             friendship.setStartDateTime(today);
             exist = friendshipRepository.save(friendship);
             log.debug("REST request to save Friendship CREATED : {}", exist);
+            return ResponseEntity.created(new URI("/api/friendships/" + exist.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert("friendship", exist.getId().toString()))
+                .body(exist);
         }
-        return Optional.ofNullable(exist)
-            .map(result -> new ResponseEntity<>(
-                result,
-                HttpStatus.OK))
-            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
 
     }
 
