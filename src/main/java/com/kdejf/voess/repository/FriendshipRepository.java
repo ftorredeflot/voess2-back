@@ -20,6 +20,6 @@ public interface FriendshipRepository extends JpaRepository<Friendship,Long> {
     List<Friendship> findByFrienshipToIsCurrentUser();
 
     Friendship findByFrienshipFromIdAndFrienshipToId(Long from,Long to);
-    Friendship findByFrienshipFromIdAndFrienshipToIdAndFinishDateTimeIsNull(Long from, Long to, ZonedDateTime a);
+  //  Friendship findByFrienshipFromIdAndFrienshipToIdAndFinishDateTimeIsNull(Long from, Long to, ZonedDateTime a);
 
 }
