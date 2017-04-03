@@ -161,19 +161,19 @@ public class FriendshipResource {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-   // @GetMapping("/friendships/betwen-user-and/{id}")
-   // @Timed
-  //  public ResponseEntity<Friendship> getFriendshipBetwenUsers(@PathVariable Long id) {
- //       log.debug("REST request to get Friendship betwen user and : {}", id);
-   //     User user1 = userRepo.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
-  //      User user2=userRepo.findOne(id);
-  //      Friendship friendship = friendshipRepository.findByFrienshipFromIdAndFrienshipToIdAndFinishDateTimeIsNull(user1.getId(), user2.getId(), null);
-   //     return Optional.ofNullable(friendship)
-    //        .map(result -> new ResponseEntity<>(
-    //            result,
-      //          HttpStatus.OK))
-     //       .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-  //  }
+    @GetMapping("/friendships/betwen-user-and/{id}")
+    @Timed
+    public ResponseEntity<Friendship> getFriendshipBetwenUsers(@PathVariable Long id) {
+       log.debug("REST request to get Friendship betwen user and : {}", id);
+        User user1 = userRepo.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        User user2=userRepo.findOne(id);
+        Friendship friendship = friendshipRepository.findByFrienshipFromIdAndFrienshipToIdAndFinishDateTimeIsNotdefined(user1.getId(), user2.getId());
+        return Optional.ofNullable(friendship)
+           .map(result -> new ResponseEntity<>(
+               result,
+                HttpStatus.OK))
+           .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
     /**
      * DELETE  /friendships/:id : delete the "id" friendship.
