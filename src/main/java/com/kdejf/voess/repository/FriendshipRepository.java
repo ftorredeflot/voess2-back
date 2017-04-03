@@ -23,7 +23,7 @@ public interface FriendshipRepository extends JpaRepository<Friendship,Long> {
     Friendship findByFrienshipFromIdAndFrienshipToId(Long from,Long to);
 
 
-    @Query("select fr from Friendship fr where fr.frienshipFrom= :f and fr.frienshipTo = :t and  fr.finishDateTime is null" )
+    @Query("select fr from Friendship fr where fr.frienshipFrom.id = :f and fr.frienshipTo.id = :t and  fr.finishDateTime is null" )
     Friendship findByFrienshipFromIdAndFrienshipToIdAndFinishDateTimeIsNotdefined(@Param("f") Long from,@Param("t") Long to);
 
 }
