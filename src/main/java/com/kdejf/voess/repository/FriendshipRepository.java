@@ -4,6 +4,7 @@ import com.kdejf.voess.domain.Friendship;
 
 import org.springframework.data.jpa.repository.*;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -19,5 +20,6 @@ public interface FriendshipRepository extends JpaRepository<Friendship,Long> {
     List<Friendship> findByFrienshipToIsCurrentUser();
 
     Friendship findByFrienshipFromIdAndFrienshipToId(Long from,Long to);
+    Friendship findByFrienshipFromIdAndFrienshipToIdAndFinishDateTimeIsNull(Long from, Long to, ZonedDateTime a);
 
 }
