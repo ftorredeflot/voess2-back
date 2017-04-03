@@ -126,6 +126,28 @@ public class FriendshipResource {
             .body(result);
     }
 
+
+
+    @PutMapping("/delete-frienship-to/{id}")
+    @Timed
+    public ResponseEntity<Friendship> finishFriendship(@PathVariable Long id) throws URISyntaxException {
+        User user1 = userRepo.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        User user2 = userRepo.findOne(id);
+        ZonedDateTime today = ZonedDateTime.now();
+        Friendship friendship = friendshipRepository.findByFrienshipFromIdAndFrienshipToIdAndFinishDateTimeIsNotdefined(user1.getId(), user2.getId());
+        if (friendship==null){
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "finished", "A new friendship is already finished")).body(null);
+        }
+        Friendship result=friendship;
+        result.setFinishDateTime(today);
+        friendshipRepository.save(result);
+
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert("friendship", friendship.getId().toString()))
+            .body(result);
+    }
+
+
     /**
      * GET  /friendships : get all the friendships.
      *
