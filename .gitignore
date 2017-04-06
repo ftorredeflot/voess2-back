@@ -140,3 +140,4 @@ nbproject
 nbbuild/
 nbdist/
 .nb-gradle/
+#/src/main/webapp/bower_components/
