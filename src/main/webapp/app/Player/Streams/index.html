@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+https://player.twitch.tv/?channel=imaqtpie
+
+<div id="SamplePlayerDivID"></div>
+        <script type="text/javascript">
+            var options = {
+                width: 1280,
+                height: 720,
+                channel: "imaqtpie"
+            };
+            var player = new Twitch.Player("SamplePlayerDivID", options);
+            player.setVolume(0.5);
+        </script>
+<iframe src="https://player.twitch.tv/?channel=barraccudda" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe><a href="https://www.twitch.tv/barraccudda?tt_medium=live_embed&tt_content=text_link" style="padding:2px 0px 4px; display:block; width:345px; font-weight:normal; font-size:10px; text-decoration:underline;">Ver vídeo en directo de BaRRaCCuDDa en www.twitch.tv</a>
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src= "http://player.twitch.tv/js/embed/v1.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://cdn.rawgit.com/Fugiman/Twitch-Channel-Status/1d74252edf89110507cbf3088f9c3eaa38fac9d3/twitch-channel-status.min.js"></script>
+        
+    </head>
+    <body>
+        <h1 align="center">MAGNER'S STREAMS PLAYER</h1>
+        <div align="center">
+            <iframe
+                src="https://player.twitch.tv/?channel=magnerss"
+                height="720"
+                width="1280"
+                frameborder="0"
+                scrolling="no"
+                allowfullscreen="allowfullscreen">
+            </iframe>
+        </div>
+        Check Riot<img data-twitch-channel="riotgames">
+        Check Barracuda<img data-twitch-channel="barraccudda">
+        curl -H 'Accept: application/vnd.twitchtv.v5+json' \
+        -H 'Client-ID: 20h1n0xfh24w7v1im9g48dvcaqhj9i' \
+        -X GET 'https://api.twitch.tv/kraken/streams/?game=Overwatch'
+
+        
+    </body>
+</html>
