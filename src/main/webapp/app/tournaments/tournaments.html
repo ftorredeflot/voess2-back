@@ -1,23 +1,21 @@
 <div>
     <div class="container-fluid">
-        <!--TODO translate ref. data-translate="voess2App.userWatchedVideo.home.title"-->
-        <h2>tournaments</h2>
-    </div>
+        <h2 data-translate="voess2App.tournament.home.title">Tournaments</h2>
+    </div><br/>
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-enabled="vm.page >= vm.links['last']">
             <tr ng-repeat="tournament in vm.tournaments track by tournament.id">
-                <td>{{tournament.tournamentName}}</td>
-                <td>{{tournament.tournamentDate | date:'medium'}}</td>
                 <td>
                     <a ng-if="tournament.tournamentImage"
                        ng-click="vm.openFile(tournament.tournamentImageContentType, tournament.tournamentImage)">
                         <img
                             data-ng-src="{{'data:' + tournament.tournamentImageContentType + ';base64,' + tournament.tournamentImage}}"
-                            style="max-height: 30px;" alt="tournament image"/>
+                             style="max-height: 30px;" alt="tournament image"/>
                     </a>
-                    <span ng-if="tournament.tournamentImage">{{tournament.tournamentImageContentType}}, {{vm.byteSize(tournament.tournamentImage)}}</span>
                 </td>
+                <td>{{tournament.tournamentName}}</td>
+                <td>{{tournament.tournamentDate | date:'medium'}}</td>
             </tr>
             </tbody>
         </table>
