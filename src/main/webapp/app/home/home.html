@@ -1,180 +1,179 @@
 <div ng-cloak>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="center_text">
-                    <h1 data-translate="home.title">Welcome to VOESS! </h1>
-                    <p class="lead" data-translate="home.subtitle">A place where you wont be spoiled!</p>
-                </div>
-
-                <div class=".bg-info">
-                    <img src="content/images/imagen_prueba.jpg" width="100%" height="80%" alt="logo"/>
-                </div>
+    <div ng-switch="vm.isAuthenticated()">
+        <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message"
+             translate-values="{username: '{{vm.account.login}}'}">
+            You are logged in as user "{{vm.account.login}}".
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="center_text">
+                <h1 data-translate="home.title">Welcome to VOESS! </h1>
+                <p class="lead" data-translate="home.subtitle">A place where you wont be spoiled!</p>
             </div>
-            <div class="col-md-12">
-                <div class="center_text">
-                    <div ng-switch="vm.isAuthenticated()">
-                        <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message"
-                             translate-values="{username: '{{vm.account.login}}'}">
-                            You are logged in as user "{{vm.account.login}}".
-                        </div>
-                    </div>
 
-                    <br>
+            <div class=".bg-info">
+                <img src="content/images/imagen_prueba.jpg" width="100%" height="80%" alt="logo"/>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="center_text">
+                <br>
 
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-8">
-                                <div id="tournament1">
-                                    <!-- img -->
-                                    <div id="demo">
-                                        <!--text-->
-                                    </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <div id="tournament1">
+                                <!-- img -->
+                                <div id="demo">
+                                    <!--text-->
                                 </div>
                             </div>
-                            <div class="col-md-2"></div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+
+                <h2>Escoge un juego y comienza a ver una partida!</h2>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/leagueoflegends.jpg" class="img-rounded" width="70%"
+                                 height="70%"
+                                 alt="leagueoflegends"/>
+                        </div>
+                        <div class="row">League of Legends</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/dota2.jpg" class="img-rounded" width="70%" height="70%"
+                                 alt="dota2"/>
+                        </div>
+                        <div class="row">Dota 2</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/hearthstone.jpg" class="img-rounded" width="70%"
+                                 height="70%"
+                                 alt="hearthstone"/>
+                        </div>
+                        <div class="row">Hearthstone</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/overwatch.jpg" class="img-rounded" width="70%"
+                                 height="70%" alt="overwatch"/>
+                        </div>
+                        <div class="row">Overwatch</div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/leagueoflegends.jpg" class="img-rounded" width="70%"
+                                 height="70%"
+                                 alt="leagueoflegends"/>
+                        </div>
+                        <div class="row">League of Legends</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/dota2.jpg" class="img-rounded" width="70%" height="70%"
+                                 alt="dota2"/>
+                        </div>
+                        <div class="row">Dota 2</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/hearthstone.jpg" class="img-rounded" width="70%"
+                                 height="70%"
+                                 alt="hearthstone"/>
+                        </div>
+                        <div class="row">Hearthstone</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/overwatch.jpg" class="img-rounded" width="70%"
+                                 height="70%" alt="overwatch"/>
+                        </div>
+                        <div class="row">Overwatch</div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/leagueoflegends.jpg" class="img-rounded" width="70%"
+                                 height="70%"
+                                 alt="leagueoflegends"/>
+                        </div>
+                        <div class="row">League of Legends</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/dota2.jpg" class="img-rounded" width="70%" height="70%"
+                                 alt="dota2"/>
+                        </div>
+                        <div class="row">Dota 2</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <img src="content/images/juegos/hearthstone.jpg" class="img-rounded" width="70%"
+                                 height="70%"
+                                 alt="hearthstone"/>
+                        </div>
+                        <div class="row">Hearthstone</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="alert alert-info">
+                        <div class="row">
+                            <img src="content/images/juegos/overwatch.jpg" class="img-rounded" width="70%"
+                                 height="70%" alt="overwatch"/>
+                        </div>
+                        <div class="row">Overwatch</div>
                         </div>
                     </div>
+                </div>
 
-
-                    <h2>Escoge un juego y comienza a ver una partida!</h2>
-                    <br>
-
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/leagueoflegends.jpg" class="img-rounded" width="70%"
-                                     height="70%"
-                                     alt="leagueoflegends"/>
-                            </div>
-                            <div class="row">League of Legends</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/dota2.jpg" class="img-rounded" width="70%" height="70%"
-                                     alt="dota2"/>
-                            </div>
-                            <div class="row">Dota 2</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/hearthstone.jpg" class="img-rounded" width="70%"
-                                     height="70%"
-                                     alt="hearthstone"/>
-                            </div>
-                            <div class="row">Hearthstone</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/overwatch.jpg" class="img-rounded" width="70%"
-                                     height="70%" alt="overwatch"/>
-                            </div>
-                            <div class="row">Overwatch</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-warning">
+                            <ul class="list-group">
+                                <li class="list-group-item">Programa Semanal:</li>
+                                <li class="list-group-item">1-Entrevista con Skoj <span class="badge"></span></li>
+                                <li class="list-group-item">2-Analisis del metagame <span class="badge"></span></li>
+                                <li class="list-group-item">3-Darkhorse de la competicion <span
+                                    class="badge"></span></li>
+                            </ul>
                         </div>
                     </div>
-
-                    <br>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/leagueoflegends.jpg" class="img-rounded" width="70%"
-                                     height="70%"
-                                     alt="leagueoflegends"/>
-                            </div>
-                            <div class="row">League of Legends</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/dota2.jpg" class="img-rounded" width="70%" height="70%"
-                                     alt="dota2"/>
-                            </div>
-                            <div class="row">Dota 2</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/hearthstone.jpg" class="img-rounded" width="70%"
-                                     height="70%"
-                                     alt="hearthstone"/>
-                            </div>
-                            <div class="row">Hearthstone</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/overwatch.jpg" class="img-rounded" width="70%"
-                                     height="70%" alt="overwatch"/>
-                            </div>
-                            <div class="row">Overwatch</div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning">
+                            <ul class="list-group">
+                                <li class="list-group-item">Featured Stuff:</li>
+                                <li class="list-group-item">1-Algo algo Pentakill Koreano<span class="badge"></span>
+                                </li>
+                                <li class="list-group-item">2-Ching Tournament <span class="badge"></span></li>
+                                <li class="list-group-item">3-Mistfits vs 3CT <span class="badge"></span></li>
+                            </ul>
                         </div>
                     </div>
+                </div>
+                <br>
 
-                    <br>
-
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/leagueoflegends.jpg" class="img-rounded" width="70%"
-                                     height="70%"
-                                     alt="leagueoflegends"/>
-                            </div>
-                            <div class="row">League of Legends</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/dota2.jpg" class="img-rounded" width="70%" height="70%"
-                                     alt="dota2"/>
-                            </div>
-                            <div class="row">Dota 2</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/hearthstone.jpg" class="img-rounded" width="70%"
-                                     height="70%"
-                                     alt="hearthstone"/>
-                            </div>
-                            <div class="row">Hearthstone</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="row">
-                                <img src="content/images/juegos/overwatch.jpg" class="img-rounded" width="70%"
-                                     height="70%" alt="overwatch"/>
-                            </div>
-                            <div class="row">Overwatch</div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="alert alert-warning">
-                                <ul class="list-group">
-                                    <li class="list-group-item">Programa Semanal:</li>
-                                    <li class="list-group-item">1-Entrevista con Skoj <span class="badge"></span></li>
-                                    <li class="list-group-item">2-Analisis del metagame <span class="badge"></span></li>
-                                    <li class="list-group-item">3-Darkhorse de la competicion <span
-                                        class="badge"></span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="alert alert-warning">
-                                <ul class="list-group">
-                                    <li class="list-group-item">Featured Stuff:</li>
-                                    <li class="list-group-item">1-Algo algo Pentakill Koreano<span class="badge"></span>
-                                    </li>
-                                    <li class="list-group-item">2-Ching Tournament <span class="badge"></span></li>
-                                    <li class="list-group-item">3-Mistfits vs 3CT <span class="badge"></span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-
-
-                    <div class="alert alert-warning" ng-switch-when="false"
-                         data-translate="global.messages.info.register" translate-compile>
-                        You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new
-                        account</a>
-                    </div>
+                <div class="alert alert-warning" ng-switch-when="false"
+                     data-translate="global.messages.info.register" translate-compile>
+                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new
+                    account</a>
                 </div>
             </div>
         </div>
+    </div>
 </div>
