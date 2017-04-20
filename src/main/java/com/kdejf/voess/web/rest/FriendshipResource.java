@@ -68,13 +68,17 @@ public class FriendshipResource {
     public ResponseEntity<Friendship> createNewFriendship(@PathVariable Long id) throws URISyntaxException {
         User user1 = userRepo.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
         User user2 = userRepo.findOne(id);
+        if (user2 == null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "nouserexist", "A new friendship cannot already exist")).body(null);
+        }
         Friendship exist = friendshipRepository.findByFrienshipFromIdAndFrienshipToId(user1.getId(), user2.getId());
         ZonedDateTime today = ZonedDateTime.now();
-        if(exist != null&& exist.getFinishDateTime()==null){
-             log.debug("REST request to save Friendship EXIST : {}", exist);
-           return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "exists", "A new friendship cannot already exist")).body(null);
-        }
-        else if (exist != null&& exist.getFinishDateTime()!=null) {
+
+
+        if (exist != null && exist.getFinishDateTime() == null) {
+            log.debug("REST request to save Friendship EXIST : {}", exist);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "exists", "A new friendship cannot already exist")).body(null);
+        } else if (exist != null && exist.getFinishDateTime() != null) {
             log.debug("REST request to save Friendship EXIST but UPDATE: {}", exist);
             exist.setFinishDateTime(null);
             exist.setStartDateTime(today);
@@ -83,12 +87,10 @@ public class FriendshipResource {
             return ResponseEntity.ok()
                 .headers(HeaderUtil.createEntityUpdateAlert("friendship", exist.getId().toString()))
                 .body(exist);
-        }
-        else if(user1.getId()==user2.getId()){
+        } else if (user1.getId() == user2.getId()) {
             log.debug("Recursive friendship");
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "recursivefriendship", "Recursive friendship")).body(null);
-        }
-        else {
+        } else {
             Friendship friendship = new Friendship();
             friendship.setFrienshipFrom(user1);
             friendship.setFrienshipTo(user2);
@@ -98,8 +100,8 @@ public class FriendshipResource {
             return ResponseEntity.created(new URI("/api/friendships/" + exist.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert("friendship", exist.getId().toString()))
                 .body(exist);
-        }
 
+        }
 
     }
 
