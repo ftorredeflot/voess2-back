@@ -5,6 +5,7 @@ import com.kdejf.voess.domain.UserWatchedVideo;
 import com.kdejf.voess.domain.UserFavVideo;
 import com.kdejf.voess.domain.User;
 import com.kdejf.voess.domain.Video;
+import com.kdejf.voess.domain.Game;
 
 import com.kdejf.voess.security.SecurityUtils;
 
@@ -12,6 +13,7 @@ import com.kdejf.voess.repository.VideoRepository;
 import com.kdejf.voess.repository.UserRepository;
 import com.kdejf.voess.repository.UserWatchedVideoRepository;
 import com.kdejf.voess.repository.UserFavVideoRepository;
+import com.kdejf.voess.repository.GameRepository;
 
 import com.kdejf.voess.web.rest.util.HeaderUtil;
 import com.kdejf.voess.web.rest.util.PaginationUtil;
@@ -20,6 +22,7 @@ import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -50,6 +53,8 @@ public class VideoResource {
     private UserWatchedVideoRepository userwatchedRepository;
     @Inject
     private UserFavVideoRepository userfavRepository;
+    @Inject
+    private GameRepository grepo;
 
 
 
@@ -170,6 +175,26 @@ public class VideoResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/videos");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+
+    /**
+     * GET  /videos : get all the videos.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of videos in body
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
+     */
+    @GetMapping("/videosbygame/{id}")
+    @Timed
+    public ResponseEntity<List<Video>> getAllVideosygame(@PathVariable Long id ,@ApiParam Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Videos");
+        Page<Video> page = videoRepository.findByGameId(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/videosbygame");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+
 
     /**
      * GET  /videos/:id : get the "id" video.
