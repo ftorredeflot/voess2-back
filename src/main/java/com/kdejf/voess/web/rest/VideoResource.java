@@ -189,6 +189,10 @@ public class VideoResource {
     public ResponseEntity<List<Video>> getAllVideosygame(@PathVariable Long id ,@ApiParam Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Videos");
+        Game game=grepo.findOne(id);
+        if (game==null){
+            ResponseEntity.badRequest().headers(HeaderUtil.createAlert("friendship", "nogameexist")).body(null);
+        }
         Page<Video> page = videoRepository.findByGameId(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/videosbygame");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
