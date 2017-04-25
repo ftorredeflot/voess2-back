@@ -1,7 +1,10 @@
 package com.kdejf.voess.repository;
 
 import com.kdejf.voess.domain.Video;
+import com.kdejf.voess.domain.Game;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 
@@ -19,4 +22,5 @@ public interface VideoRepository extends JpaRepository<Video,Long> {
     @Query("select video from Video video left join fetch video.players where video.id =:id")
     Video findOneWithEagerRelationships(@Param("id") Long id);
 
+    Page<Video> findByGameId(Long id, Pageable pageable);
 }
