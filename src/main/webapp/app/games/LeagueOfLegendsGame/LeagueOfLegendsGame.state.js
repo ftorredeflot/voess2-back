@@ -8,15 +8,15 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('league', {
+        $stateProvider.state('LeagueOfLegendsGame', {
             parent: 'app',
-            url: '/games/league',
+            url: '/games/LeagueOfLegendsGame',
             data: {
                 authorities: []
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/games/league/league.html',
+                    templateUrl: 'app/games/LeagueOfLegends/LeagueOfLegendsGame.html',
                     controller: 'HomeControler',
                     controllerAs: 'vm'
                 }
@@ -30,3 +30,5 @@
         });
     }
 })();
+
+
