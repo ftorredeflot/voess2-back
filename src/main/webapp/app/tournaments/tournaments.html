@@ -6,7 +6,7 @@
         <table class="jh-table table table-striped">
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-enabled="vm.page >= vm.links['last']">
             <tr ng-repeat="tournament in vm.tournaments track by tournament.id">
-                <td ui-sref="tournamentvoess-detail({id:tournament.id})">
+                <td ui-sref="tournamentsvoess-detail({id:tournament.id})">
                     <p ng-if="tournament.tournamentImage"
                        ><!--ng-click="vm.openFile(tournament.tournamentImageContentType, tournament.tournamentImage)"-->
                         <img

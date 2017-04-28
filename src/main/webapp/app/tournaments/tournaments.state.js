@@ -58,6 +58,38 @@
                     }]
                 }
             })
+            //TODO
+            .state('tournamentsvoess-detail', {
+                        parent: 'entity',
+                        url: '/tournamentvoess/{id}',
+                        data: {
+                            pageTitle: 'voess2App.tournament.detail.title'
+                        },
+                        views: {
+                            'content@': {
+                                templateUrl: 'app/entities/tournament/tournamentvoess-detail.html',
+                                controller: 'TournamentVoessDetailController',
+                                controllerAs: 'vm'
+                            }
+                        },
+                        resolve: {
+                            translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                                $translatePartialLoader.addPart('tournament');
+                                return $translate.refresh();
+                            }],
+                            entity: ['$stateParams', 'Tournament', function($stateParams, Tournament) {
+                                return Tournament.get({id : $stateParams.id}).$promise;
+                            }],
+                            previousState: ["$state", function ($state) {
+                                var currentStateData = {
+                                    name: $state.current.name || 'tournamentvoess',
+                                    params: $state.params,
+                                    url: $state.href($state.current.name, $state.params)
+                                };
+                                return currentStateData;
+                            }]
+                        }
+                    })
     }
 
 })();
