@@ -3,12 +3,12 @@
         <h2 data-translate="voess2App.tournament.home.title">Tournaments</h2>
     </div><br/>
     <div class="table-responsive">
-        <table class="jh-table table table-striped">
+        <table class="jh-table table table-bordered">
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-enabled="vm.page >= vm.links['last']">
-            <tr ng-repeat="tournament in vm.tournaments track by tournament.id">
-                <td ui-sref="tournamentsvoess-detail({id:tournament.id})">
-                    <p ng-if="tournament.tournamentImage"
-                       ><!--ng-click="vm.openFile(tournament.tournamentImageContentType, tournament.tournamentImage)"-->
+            <tr ng-repeat="tournament in vm.tournaments track by tournament.id" ui-sref="tournamentsvoess-detail({id:tournament.id})">
+                <td>
+                    <p ng-if="tournament.tournamentImage">
+                        <!--ng-click="vm.openFile(tournament.tournamentImageContentType, tournament.tournamentImage)"-->
                         <img
                             data-ng-src="{{'data:' + tournament.tournamentImageContentType + ';base64,' + tournament.tournamentImage}}"
                              style="max-height: 30px;" alt="tournament image"/>

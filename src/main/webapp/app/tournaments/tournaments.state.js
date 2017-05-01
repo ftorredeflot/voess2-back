@@ -60,14 +60,11 @@
             })
             //TODO
             .state('tournamentsvoess-detail', {
-                        parent: 'entity',
-                        url: '/tournamentvoess/{id}',
-                        data: {
-                            pageTitle: 'voess2App.tournament.detail.title'
-                        },
+                        parent: 'app',
+                        url: '/tournaments/{id}',
                         views: {
                             'content@': {
-                                templateUrl: 'app/entities/tournament/tournamentvoess-detail.html',
+                                templateUrl: 'app/tournaments/tournamentsvoess-detail.html',
                                 controller: 'TournamentVoessDetailController',
                                 controllerAs: 'vm'
                             }
@@ -82,7 +79,7 @@
                             }],
                             previousState: ["$state", function ($state) {
                                 var currentStateData = {
-                                    name: $state.current.name || 'tournamentvoess',
+                                    name: $state.current.name || 'AllTournamentVoessController',
                                     params: $state.params,
                                     url: $state.href($state.current.name, $state.params)
                                 };
