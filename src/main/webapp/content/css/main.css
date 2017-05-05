@@ -579,18 +579,34 @@ Listado de video
     border-radius: 5px;
     margin-bottom: 10px;
     width: 100%;
-    height: 210px;
+    height: 100%;
     text-align: left;
 }
 
 .vparte1{
     display: inline-block;
-    width:25%;
+    width: 35%;
 }
 
 .vparte2{
     display: inline-block;
-    width:25%;
+    width:60%;
+}
+
+.vname{
+    font-size: 30px;
+}
+
+.vgame{
+    display: inline-block;
+}
+
+.vvisistas{
+    display: inline-block;
+}
+
+.vtournament{
+    display: inline-block;
 }
 
 .vteam1{
@@ -603,10 +619,11 @@ Listado de video
 
 .vparte3{
     display: inline-block;
-    width:25%;
+
 }
 
 .vimage{
     height: 203px;
-    width: 360px;
+    width: 100%;
+    border-radius: 5px;
 }

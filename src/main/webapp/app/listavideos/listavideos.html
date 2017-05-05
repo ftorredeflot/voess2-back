@@ -38,14 +38,16 @@
                 </div>
                 <div class="vparte2">
                     <div class="vname">{{video.videoName}}</div>
+                    <div class="vjuego">Juego: {{video.game.gameName}}</div>
+                    <div class="vtournament">Tourneo: {{video.tournament.tournamentName}}</div>
                     <div class="vteams">
+                        Equipos:
                         <div class="vteam1">{{video.team1.teamName}}</div>
                         VS
                         <div class="vteam2">{{video.team2.teamName}}</div>
                     </div>
-                </div>
-                <div class="vparte3">
-                    <img class="vimage" data-ng-src="{{'data:' + video.game.gamePictureContentType + ';base64,' + video.game.gamePicture}}"/>
+                    <div class="vvisistas">Visitas: {{video.videoViewerCount}}</div>
+
                 </div>
             </div>
         </div>
