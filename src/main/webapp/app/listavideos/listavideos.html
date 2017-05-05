@@ -4,29 +4,51 @@
     </div><br/>
 
     <div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
-            <tr>
-                <td>
-                </td>
-                <td>Id</td>
-                <td>Nombre</td>
-                <td>Duracion</td>
-                <td>Juego</td>
-                <td>Equipo 1</td>
-                <td>Equipo 2</td>
-            </tr>
-            <tr ng-repeat="video in vm.videos track by video.id">
-                <td>
-                </td>
-                <td>{{video.id}}</td>
-                <td>{{video.videoName}}</td>
-                <td>{{video.videoDuration}}</td>
-                <td>{{video.game.gameName}}</td>
-                <td>{{video.team1.teamName}}</td>
-                <td>{{video.team2.teamName}}</td>
-            </tr>
-            </tbody>
-        </table>
+        <!--<table class="jh-table table table-striped">-->
+            <!--<tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">-->
+            <!--<tr>-->
+                <!--<td>-->
+                <!--</td>-->
+                <!--<td>Id</td>-->
+                <!--<td>Nombre</td>-->
+                <!--<td>Duracion</td>-->
+                <!--<td>Juego</td>-->
+                <!--<td>Equipo 1</td>-->
+                <!--<td>Equipo 2</td>-->
+            <!--</tr>-->
+            <!--<tr ng-repeat="video in vm.videos track by video.id">-->
+                <!--<td>-->
+                <!--</td>-->
+                <!--<td>{{video.id}}</td>-->
+                <!--<td>{{video.videoName}}</td>-->
+                <!--<td>{{video.videoDuration}}</td>-->
+                <!--<td>{{video.game.gameName}}</td>-->
+                <!--<td>{{video.team1.teamName}}</td>-->
+                <!--<td>{{video.team2.teamName}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+
+        <div ng-repeat="video in vm.videos track by video.id">
+            <div class="vtodo">
+                <div class="vparte1">
+                    <a ng-if="video.videoCover" ng-click="vm.openFile(video.videoCoverContentType, video.videoCover)">
+                        <img class="vimage" data-ng-src="{{'data:' + video.videoCoverContentType + ';base64,' + video.videoCover}}"/>
+                    </a>
+                </div>
+                <div class="vparte2">
+                    <div class="vname">{{video.videoName}}</div>
+                    <div class="vteams">
+                        <div class="vteam1">{{video.team1.teamName}}</div>
+                        VS
+                        <div class="vteam2">{{video.team2.teamName}}</div>
+                    </div>
+                </div>
+                <div class="vparte3">
+                    <img class="vimage" data-ng-src="{{'data:' + video.game.gamePictureContentType + ';base64,' + video.game.gamePicture}}"/>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

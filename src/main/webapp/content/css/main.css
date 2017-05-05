@@ -570,3 +570,43 @@ Dropdown propio
     width: 100%;
 }
 
+/*==============================================
+Listado de video
+===============================================*/
+
+.vtodo{
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 210px;
+    text-align: left;
+}
+
+.vparte1{
+    display: inline-block;
+    width:25%;
+}
+
+.vparte2{
+    display: inline-block;
+    width:25%;
+}
+
+.vteam1{
+    display: inline-block;
+}
+
+.vteam2{
+    display: inline-block;
+}
+
+.vparte3{
+    display: inline-block;
+    width:25%;
+}
+
+.vimage{
+    height: 203px;
+    width: 360px;
+}
