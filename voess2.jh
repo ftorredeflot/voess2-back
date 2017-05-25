@@ -14,7 +14,7 @@ entity Video{
     videoViewerCount Integer ,
     videoViewerCountLive Integer ,
     videoUrl String,
-    videoBlob AnyBlob, 
+    videoBlob AnyBlob,
     videoCover ImageBlob,
 	videoPicks Integer,
     videoGameStart Integer,
@@ -73,7 +73,7 @@ entity Friendship {
 
 entity UserLikedVideo {
 startDateTime ZonedDateTime,
-userLiked Boolean 
+userLiked Boolean
 }
 
 
@@ -178,3 +178,5 @@ UserExt{user} to User{userExt}
 paginate all with infinite-scroll
 
 angularSuffix * with voess
+
+
