@@ -57,7 +57,6 @@ public class VideoResource {
     private GameRepository grepo;
 
 
-
     /**
      * POST  /videos : Create a new video.
      *
@@ -82,19 +81,18 @@ public class VideoResource {
     @PostMapping("/video/{id}/userFav")
     @Timed
     public ResponseEntity<UserFavVideo> userFavset(@PathVariable Long id) throws URISyntaxException {
-        User user=userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
         //Video video= videoRepository.findOne(id);
         UserFavVideo exist = userfavRepository.findByUserAndVideoId(user, id);
         ZonedDateTime today = ZonedDateTime.now();
 
-        if(exist!=null){
+        if (exist != null) {
             log.debug("REST request to save UserFavVideo : {}", exist);
             //exist.setStartDateTime(today);
             //userfavRepository.save(exist);
 
-        }
-        else{
-            exist= new UserFavVideo();
+        } else {
+            exist = new UserFavVideo();
             exist.setVideo(videoRepository.findOne(id));
             exist.setUser(user);
             exist.setStartDateTime(today);
@@ -109,7 +107,6 @@ public class VideoResource {
     }
 
 
-
     /**
      * POST  /video/{id}/userPlayed : Create a new liked video.
      *
@@ -121,14 +118,14 @@ public class VideoResource {
     @Timed
     public ResponseEntity<UserWatchedVideo> userViewedset(@PathVariable Long id) throws URISyntaxException {
 
-    User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
         Video video = videoRepository.findOne(id);
         ZonedDateTime today = ZonedDateTime.now();
         UserWatchedVideo u = new UserWatchedVideo();
         u.setStartDateTime(today);
         u.setUser(user);
         u.setVideo(video);
-        UserWatchedVideo result= userwatchedRepository.save(u);
+        UserWatchedVideo result = userwatchedRepository.save(u);
         return ResponseEntity.created(new URI("/api/user-watched-videos" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("userWatchedVideo", result.getId().toString()))
             .body(result);
@@ -186,18 +183,17 @@ public class VideoResource {
      */
     @GetMapping("/videosbygame/{id}")
     @Timed
-    public ResponseEntity<List<Video>> getAllVideosygame(@PathVariable Long id ,@ApiParam Pageable pageable)
+    public ResponseEntity<List<Video>> getAllVideosygame(@PathVariable Long id, @ApiParam Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Videos");
-        Game game=grepo.findOne(id);
-        if (game==null){
+        Game game = grepo.findOne(id);
+        if (game == null) {
             ResponseEntity.badRequest().headers(HeaderUtil.createAlert("friendship", "nogameexist")).body(null);
         }
         Page<Video> page = videoRepository.findByGameId(id, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/videosbygame");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-
 
 
     /**
@@ -217,6 +213,7 @@ public class VideoResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
     /**
      * GET  /video/{id}/userPlayed : get the "id" video.
      *
@@ -226,8 +223,8 @@ public class VideoResource {
     @GetMapping("/video/{id}/userPlayed")
     @Timed
     public ResponseEntity<UserWatchedVideo> userViewedget(@PathVariable Long id) throws URISyntaxException {
-        List<UserWatchedVideo> list =userwatchedRepository.findByuser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
-        UserWatchedVideo like= list.get(list.size()-1);
+        List<UserWatchedVideo> list = userwatchedRepository.findByuser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
+        UserWatchedVideo like = list.get(list.size() - 1);
 
         return Optional.ofNullable(like)
             .map(result -> new ResponseEntity<>(
@@ -239,7 +236,7 @@ public class VideoResource {
     @GetMapping("/video/{id}/userFav")
     @Timed
     public ResponseEntity<UserFavVideo> userFavget(@PathVariable Long id) throws URISyntaxException {
-        User user=userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
         //Video video= videoRepository.findOne(id);
         UserFavVideo exist = userfavRepository.findByUserAndVideoId(user, id);
 
@@ -249,7 +246,6 @@ public class VideoResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
 
 
     /**
