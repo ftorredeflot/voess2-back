@@ -129,21 +129,20 @@ public class FriendshipResource {
     }
 
 
-
     @PutMapping("/delete-frienship-to/{id}")
     @Timed
     public ResponseEntity<Friendship> finishFriendship(@PathVariable Long id) throws URISyntaxException {
         User user1 = userRepo.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
         User user2 = userRepo.findOne(id);
-         if (user2 == null) {
+        if (user2 == null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createEntityUpdateAlert("friendship", "nouserexist")).body(null);
         }
         ZonedDateTime today = ZonedDateTime.now();
         Friendship friendship = friendshipRepository.findByFrienshipFromIdAndFrienshipToIdAndFinishDateTimeIsNotdefined(user1.getId(), user2.getId());
-        if (friendship==null){
+        if (friendship == null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "finished", "A new friendship is already finished")).body(null);
         }
-        Friendship result=friendship;
+        Friendship result = friendship;
         result.setFinishDateTime(today);
         friendshipRepository.save(result);
 
@@ -191,20 +190,19 @@ public class FriendshipResource {
     @GetMapping("/friendships/betwen-user-and/{id}")
     @Timed
     public ResponseEntity<Friendship> getFriendshipBetwenUsers(@PathVariable Long id) {
-       log.debug("REST request to get Friendship betwen user and : {}", id);
+        log.debug("REST request to get Friendship betwen user and : {}", id);
         User user1 = userRepo.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
-        User user2=userRepo.findOne(id);
-        if (user2==null) {
+        User user2 = userRepo.findOne(id);
+        if (user2 == null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createAlert("friendship", "nouserexist")).body(null);
         }
         Friendship friendship = friendshipRepository.findByFrienshipFromIdAndFrienshipToIdAndFinishDateTimeIsNotdefined(user1.getId(), user2.getId());
         return Optional.ofNullable(friendship)
-           .map(result -> new ResponseEntity<>(
-               result,
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
-           .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
 
 
     @GetMapping("/friendships/myfriendships")
@@ -212,8 +210,8 @@ public class FriendshipResource {
     public ResponseEntity<List<Friendship>> getFriendships() {
         //log.debug("REST request to get Friendship betwen user and : {}", id);
         User user1 = userRepo.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
-       // User user2=userRepo.findOne(id);
-        if (user1==null) {
+        // User user2=userRepo.findOne(id);
+        if (user1 == null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createAlert("friendship", "nouserexist")).body(null);
         }
         List<Friendship> friendships = friendshipRepository.findByFrienshipFrom(user1);
