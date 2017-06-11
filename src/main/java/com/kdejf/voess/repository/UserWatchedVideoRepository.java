@@ -2,6 +2,7 @@ package com.kdejf.voess.repository;
 
 import com.kdejf.voess.domain.UserWatchedVideo;
 import com.kdejf.voess.domain.User;
+import com.kdejf.voess.domain.Video;
 
 import org.springframework.data.jpa.repository.*;
 
@@ -17,5 +18,6 @@ public interface UserWatchedVideoRepository extends JpaRepository<UserWatchedVid
     List<UserWatchedVideo> findByUserIsCurrentUser();
 
     List<UserWatchedVideo> findByuser(User user);
+    List<UserWatchedVideo> findByuserAndVideoId(User user,Long id);
 
 }
