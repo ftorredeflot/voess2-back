@@ -222,7 +222,20 @@ public class VideoResource {
      */
     @GetMapping("/video/{id}/userPlayed")
     @Timed
-    public ResponseEntity<UserWatchedVideo> userViewedget(@PathVariable Long id) throws URISyntaxException {
+    public ResponseEntity<List<UserWatchedVideo>> userViewedget(@PathVariable Long id) throws URISyntaxException {
+        List<UserWatchedVideo> list = userwatchedRepository.findByuser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
+        //UserWatchedVideo like = list.get(list.size() - 1);
+
+        return Optional.ofNullable(list)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/video/{id}/lastuserPlayed")
+    @Timed
+    public ResponseEntity<UserWatchedVideo> lastuserViewedget(@PathVariable Long id) throws URISyntaxException {
         List<UserWatchedVideo> list = userwatchedRepository.findByuser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
         UserWatchedVideo like = list.get(list.size() - 1);
 
