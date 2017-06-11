@@ -73,8 +73,6 @@ public class FriendshipResource {
         }
         Friendship exist = friendshipRepository.findByFrienshipFromIdAndFrienshipToId(user1.getId(), user2.getId());
         ZonedDateTime today = ZonedDateTime.now();
-
-
         if (exist != null && exist.getFinishDateTime() == null) {
             log.debug("REST request to save Friendship EXIST : {}", exist);
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "exists", "A new friendship cannot already exist")).body(null);
@@ -100,9 +98,7 @@ public class FriendshipResource {
             return ResponseEntity.created(new URI("/api/friendships/" + exist.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert("friendship", exist.getId().toString()))
                 .body(exist);
-
         }
-
     }
 
 
@@ -140,7 +136,8 @@ public class FriendshipResource {
         ZonedDateTime today = ZonedDateTime.now();
         Friendship friendship = friendshipRepository.findByFrienshipFromIdAndFrienshipToIdAndFinishDateTimeIsNotdefined(user1.getId(), user2.getId());
         if (friendship == null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "finished", "A new friendship is already finished")).body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("friendship", "finished",
+                "A new friendship is already finished")).body(null);
         }
         Friendship result = friendship;
         result.setFinishDateTime(today);
