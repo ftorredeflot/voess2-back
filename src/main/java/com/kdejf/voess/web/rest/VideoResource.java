@@ -235,6 +235,21 @@ public class VideoResource {
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/video/userPlayedAll")
+    @Timed
+    public ResponseEntity<List<UserWatchedVideo>> userViewedgetall() throws URISyntaxException {
+        List<UserWatchedVideo> list = userwatchedRepository.findByuser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
+        if (list.isEmpty()) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createAlert("userwatched", "nowatchexist")).body(null);
+        }
+
+        return Optional.ofNullable(list)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     @GetMapping("/video/{id}/lastuserPlayed")
     @Timed
     public ResponseEntity<UserWatchedVideo> lastuserViewedget(@PathVariable Long id) throws URISyntaxException {
