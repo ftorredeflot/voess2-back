@@ -120,6 +120,9 @@ public class VideoResource {
 
         User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
         Video video = videoRepository.findOne(id);
+        if (video == null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createAlert("video", "novideoexist")).body(null);
+        }
         ZonedDateTime today = ZonedDateTime.now();
         UserWatchedVideo u = new UserWatchedVideo();
         u.setStartDateTime(today);
