@@ -211,7 +211,7 @@ public class FriendshipResource {
         if (user1 == null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createAlert("friendship", "nouserexist")).body(null);
         }
-        List<Friendship> friendships = friendshipRepository.findByFrienshipFrom(user1);
+        List<Friendship> friendships = friendshipRepository.findByFrienshipFromAndFinishDateTimeIsNull(user1);
         return Optional.ofNullable(friendships)
             .map(result -> new ResponseEntity<>(
                 result,
