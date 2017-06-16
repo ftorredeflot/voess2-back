@@ -28,5 +28,6 @@ public interface FriendshipRepository extends JpaRepository<Friendship,Long> {
     Friendship findByFrienshipFromIdAndFrienshipToIdAndFinishDateTimeIsNotdefined(@Param("f") Long from,@Param("t") Long to);
 
     List<Friendship> findByFrienshipFromAndFinishDateTimeIsNull(User from);
+    List<Friendship> findByFrienshipToAndFinishDateTimeIsNull(User to);
 
 }

@@ -211,6 +211,24 @@ public class FriendshipResource {
         if (user1 == null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createAlert("friendship", "nouserexist")).body(null);
         }
+        List<Friendship> friendships = friendshipRepository.findByFrienshipToAndFinishDateTimeIsNull(user1);
+        return Optional.ofNullable(friendships)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+
+    @GetMapping("/friendships/myfriends")
+    @Timed
+    public ResponseEntity<List<Friendship>> getFriends() {
+        //log.debug("REST request to get Friendship betwen user and : {}", id);
+        User user1 = userRepo.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        // User user2=userRepo.findOne(id);
+        if (user1 == null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createAlert("friendship", "nouserexist")).body(null);
+        }
         List<Friendship> friendships = friendshipRepository.findByFrienshipFromAndFinishDateTimeIsNull(user1);
         return Optional.ofNullable(friendships)
             .map(result -> new ResponseEntity<>(
